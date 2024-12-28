@@ -1,0 +1,19 @@
+## Instructions to run Chef Zero server locally
+
+1. Create MY_USERNAME.pem RSA key in .chef folder
+
+2. Create knife.rb file in .chef folder
+current_dir = File.dirname(__FILE__)
+log_level        :info
+log_location     STDOUT
+node_name        'MY_USERNAME'
+client_key       "#{current_dir}/MY_USERNAME.pem
+chef_server_url  'http://localhost:8889'
+cookbook_path    ["#{current_dir}/../cookbooks"]
+
+3.RUN chef-zero #starting Chef Zero server
+
+4.knife client create MY_USERNAME
+
+5.Check if the client is created on server
+knife client list 
