@@ -8,7 +8,7 @@ service 'apache2' do
   action [:enable, :start]
 end
 
-file '/var/www/html/index.html' do
-  content '<html><body><h1>Welcome to Apache Web Server!</h1></body></html>'
-  action :create
+template "#{node['web_server']['document_root']}/index.html" do
+  source 'index.html.erb'
+  mode '0644'
 end
